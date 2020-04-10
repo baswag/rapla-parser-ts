@@ -1,0 +1,23 @@
+{
+  "name": "rapla-parser-ts",
+  "version": "1.0.0",
+  "description": "A parser for RAPLA written in Typescript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": "Bastian Wagner",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.17",
+    "@types/node": "^13.11.1",
+    "@types/node-fetch": "^2.5.5",
+    "typescript": "^3.8.3"
+  }
+}
