@@ -6,7 +6,7 @@ This library also uses cheerio instead of JSDOM to further increase the performa
 
 ## Install
 
-To install use
+To install use  
 `$ npm install rapla-parser-ts`
 
 To use this package, moment is also needed:  

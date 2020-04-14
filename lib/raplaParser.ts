@@ -72,7 +72,7 @@ export class RaplaParser {
     // Parse the labels and values
     for (const i in labels) {
       switch (labels[i].firstChild?.data) {
-        case 'Titel':
+        case 'Titel:':
           title = values[i].firstChild.data ?? 'N/A';
           break;
         case 'Personen:':
@@ -110,10 +110,9 @@ export class RaplaParser {
           // Reached the end of a day, add 1 day
           tempDate.add(1, 'days');
         }
-
-        // Reset the day as the end of one row was reached
-        tempDate = date.clone();
       }
+      // Reset the day as the end of one row was reached
+      tempDate = date.clone();
     }
     return res;
   }
