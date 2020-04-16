@@ -1,6 +1,6 @@
 {
   "name": "rapla-parser-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A parser for RAPLA written in Typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,6 +13,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "moment": "^2.24.0",
+    "moment-range": "^4.0.2",
     "node-fetch": "^2.6.0"
   },
   "repository": {

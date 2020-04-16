@@ -1,6 +1,9 @@
-import { RaplaEvent, TimeInterval } from './raplaEvent';
-import moment from 'moment';
+import { RaplaEvent } from './raplaEvent';
 import cheerio from 'cheerio';
+import * as Moment from 'moment';
+import { extendMoment, DateRange } from 'moment-range';
+
+const moment = extendMoment(Moment);
 
 /**
  * A RAPLA Parser using cheerio
@@ -14,7 +17,7 @@ export class RaplaParser {
    * @param element The parent element for an event
    * @param date The date on which the event takes place
    */
-  parseTimes(element: CheerioElement, date: moment.Moment): TimeInterval {
+  parseTimes(element: CheerioElement, date: Moment.Moment): DateRange {
     let time = '08:00-20:00';
     const firstNode = element.firstChild;
 
@@ -26,7 +29,7 @@ export class RaplaParser {
     if (time === '08:00-20:00') {
       const res = date.clone();
       res.set('hours', 8).set('minutes', 0);
-      return { start: res, end: res.clone().set('hours', 20) };
+      return moment.range(res, res.clone().set('hours', 20));
     }
 
     const times = time.split('-');
@@ -46,7 +49,7 @@ export class RaplaParser {
       end.set('hours', 20).set('minutes', 0);
     }
 
-    return { start, end };
+    return moment.range(start, end);
   }
 
   /**
@@ -55,7 +58,7 @@ export class RaplaParser {
    * @param element The parent element for an event
    * @param date The date on which the event takes place
    */
-  parseEvent(element: CheerioElement, date: moment.Moment): RaplaEvent {
+  parseEvent(element: CheerioElement, date: Moment.Moment): RaplaEvent {
     const times = this.parseTimes(element, date);
     let title = 'N/A';
     let persons = 'N/A';
@@ -94,7 +97,7 @@ export class RaplaParser {
    * @param htmlText The string containing the HTML Text
    * @param date The date on which this week starts (monday)
    */
-  parseEvents(htmlText: string, date: moment.Moment): RaplaEvent[] {
+  parseEvents(htmlText: string, date: Moment.Moment): RaplaEvent[] {
     let tempDate = date.clone();
     const res: RaplaEvent[] = [];
     this.$ = cheerio.load(htmlText);

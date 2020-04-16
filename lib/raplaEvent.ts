@@ -1,38 +1,32 @@
-import moment from 'moment';
+import * as Moment from 'moment';
+import { extendMoment, DateRange } from 'moment-range';
 
-/**
- * Interface for describing a Time interval defined by a start and end time
- */
-export interface TimeInterval {
-  start: moment.Moment;
-  end: moment.Moment;
-}
-
+const moment = extendMoment(Moment);
 /**
  * A class describing a RAPLA Event
  */
 export class RaplaEvent {
   constructor(
-    public times: TimeInterval,
+    public times: DateRange,
     public resources: string[],
     public persons: string,
     public title: string,
     public type: string
   ) {}
 
-  set start(newDate: moment.Moment) {
+  set start(newDate: Moment.Moment) {
     this.times.start = newDate;
   }
 
-  get start(): moment.Moment {
+  get start(): Moment.Moment {
     return this.times.start;
   }
 
-  set end(newDate: moment.Moment) {
+  set end(newDate: Moment.Moment) {
     this.times.end = newDate;
   }
 
-  get end(): moment.Moment {
+  get end(): Moment.Moment {
     return this.times.end;
   }
 
@@ -43,7 +37,7 @@ export class RaplaEvent {
    * @returns The Courses in this event
    */
   getCourses(courseRegex: RegExp): string[] {
-    return this.resources.filter(resource => {
+    return this.resources.filter((resource) => {
       return courseRegex.test(resource);
     });
   }
@@ -55,7 +49,7 @@ export class RaplaEvent {
    * @returns The Rooms in this event
    */
   getRooms(roomRegex: RegExp): string[] {
-    return this.resources.filter(resource => {
+    return this.resources.filter((resource) => {
       return roomRegex.test(resource);
     });
   }
