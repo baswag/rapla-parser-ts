@@ -107,9 +107,12 @@ export class RaplaParser {
         if (childNode.attribs?.class === 'week_block') {
           const anchor = this.$('a', childNode);
           if (anchor) {
-            res.push(this.parseEvent(anchor.toArray()[0], tempDate));
+            res.push(this.parseEvent(anchor.toArray()[0], tempDate.clone()));
           }
-        } else if (childNode.attribs?.class === 'week_separatorcell') {
+        } else if (
+          childNode.attribs?.class === 'week_separatorcell' ||
+          childNode.attribs?.class === 'week_separatorcell_black'
+        ) {
           // Reached the end of a day, add 1 day
           tempDate.add(1, 'days');
         }
