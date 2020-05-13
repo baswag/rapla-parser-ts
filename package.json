@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.18",
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.1",
     "@types/node-fetch": "^2.5.7",
     "typescript": "^3.8.3"
   }
