@@ -1,7 +1,7 @@
-import * as Moment from 'moment';
+import Moment from 'moment';
 import { extendMoment, DateRange } from 'moment-range';
 
-const moment = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 /**
  * A class describing a RAPLA Event
  */
