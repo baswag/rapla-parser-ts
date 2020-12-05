@@ -1,6 +1,6 @@
 {
   "name": "rapla-parser-ts",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A parser for RAPLA written in Typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,18 +12,18 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "moment": "^2.26.0",
+    "moment": "^2.29.1",
     "moment-range": "^4.0.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baswag/rapla-parser-ts.git"
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.18",
-    "@types/node": "^14.0.4",
+    "@types/cheerio": "^0.22.22",
+    "@types/node": "^14.14.10",
     "@types/node-fetch": "^2.5.7",
-    "typescript": "^3.9.3"
+    "typescript": "^4.1.2"
   }
 }

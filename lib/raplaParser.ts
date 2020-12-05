@@ -9,7 +9,7 @@ const moment = extendMoment(Moment as any);
  * A RAPLA Parser using cheerio
  */
 export class RaplaParser {
-  $: CheerioStatic = {} as CheerioStatic;
+  $: cheerio.Root = {} as cheerio.Root;
 
   /**
    * Given an anchor element, this function parses the exact start and end times of an RAPLA event
@@ -17,7 +17,7 @@ export class RaplaParser {
    * @param element The parent element for an event
    * @param date The date on which the event takes place
    */
-  parseTimes(element: CheerioElement, date: Moment.Moment): DateRange {
+  parseTimes(element: cheerio.Element, date: Moment.Moment): DateRange {
     let time = '08:00-20:00';
     const firstNode = element.firstChild;
 
@@ -58,7 +58,7 @@ export class RaplaParser {
    * @param element The parent element for an event
    * @param date The date on which the event takes place
    */
-  parseEvent(element: CheerioElement, date: Moment.Moment): RaplaEvent {
+  parseEvent(element: cheerio.Element, date: Moment.Moment): RaplaEvent {
     const times = this.parseTimes(element, date);
     let title = 'N/A';
     let persons = 'N/A';
